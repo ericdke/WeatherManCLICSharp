@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using MatthiWare.CommandLine;
 
 namespace WeatherManCLICSharp;
 
@@ -6,7 +7,19 @@ class Program
 {
     public static async Task Main(string[] args)
     {
-        var down = new Downloader("paris", "FR");
+        var parser = new CommandLineParser<OptionsModel>();
+        var parsedResult = await parser.ParseAsync(args);
+        if (parsedResult.HasErrors)
+        {
+            foreach (var error in parsedResult.Errors)
+            {
+                await Console.Error.WriteLineAsync(error.Message);
+            }
+            return;
+        }
+        var options = parsedResult.Result;
+        
+        var down = new Downloader(options.City, options.Country);
         var content = await down.Download();
         if (content == null)
         {
@@ -14,7 +27,6 @@ class Program
         }
         else
         {
-            Console.WriteLine(content);
             try
             {
                 WeatherResult? result = JsonConvert.DeserializeObject<WeatherResult>(content);
@@ -24,7 +36,7 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine(result.Main?.Temp);
+                    Console.WriteLine(result.Main.Temp);
                 }
             }
             catch (Exception e)
@@ -33,7 +45,5 @@ class Program
             }
            
         }
-        
-        
     }
 }

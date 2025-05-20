@@ -5,8 +5,8 @@ namespace WeatherManCLICSharp;
 public class Coord
 {
     [JsonProperty("lon")]
-    public double Lon { get; set; }
+    public required double Lon { get; set; }
 
     [JsonProperty("lat")]
-    public double Lat { get; set; }
+    public required double Lat { get; set; }
 }

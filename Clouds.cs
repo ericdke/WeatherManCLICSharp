@@ -5,5 +5,5 @@ namespace WeatherManCLICSharp;
 public class Clouds
 {
     [JsonProperty("all")]
-    public int All { get; set; }
+    public required int All { get; set; }
 }

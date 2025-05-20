@@ -5,26 +5,26 @@ namespace WeatherManCLICSharp;
 public class Main
 {
     [JsonProperty("temp")]
-    public double Temp { get; set; }
+    public required double Temp { get; set; }
 
     [JsonProperty("feels_like")]
-    public double FeelsLike { get; set; }
+    public required double FeelsLike { get; set; }
 
     [JsonProperty("temp_min")]
-    public double TempMin { get; set; }
+    public required double TempMin { get; set; }
 
     [JsonProperty("temp_max")]
-    public double TempMax { get; set; }
+    public required double TempMax { get; set; }
 
     [JsonProperty("pressure")]
-    public int Pressure { get; set; }
+    public required int Pressure { get; set; }
 
     [JsonProperty("humidity")]
-    public int Humidity { get; set; }
+    public required int Humidity { get; set; }
 
     [JsonProperty("sea_level")]
-    public int SeaLevel { get; set; }
+    public required int SeaLevel { get; set; }
 
     [JsonProperty("grnd_level")]
-    public int GrndLevel { get; set; }
+    public required int GrndLevel { get; set; }
 }

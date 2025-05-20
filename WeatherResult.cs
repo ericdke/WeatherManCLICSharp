@@ -5,41 +5,41 @@ namespace WeatherManCLICSharp;
 public class WeatherResult
 {
     [JsonProperty("coord")]
-    public Coord? Coord { get; set; }
+    public required Coord Coord { get; set; }
 
     [JsonProperty("weather")]
-    public List<Weather>? Weather { get; set; }
+    public required List<Weather> Weather { get; set; }
 
     [JsonProperty("base")]
-    public string? Base { get; set; }
+    public required string Base { get; set; }
 
     [JsonProperty("main")]
-    public Main? Main { get; set; }
+    public required Main Main { get; set; }
 
     [JsonProperty("visibility")]
-    public int? Visibility { get; set; }
+    public required int Visibility { get; set; }
 
     [JsonProperty("wind")]
     public Wind? Wind { get; set; }
 
     [JsonProperty("clouds")]
-    public Clouds? Clouds { get; set; }
+    public required Clouds Clouds { get; set; }
 
     [JsonProperty("dt")]
-    public int? Dt { get; set; }
+    public required int Dt { get; set; }
 
     [JsonProperty("sys")]
-    public Sys? Sys { get; set; }
+    public required Sys Sys { get; set; }
 
     [JsonProperty("timezone")]
-    public int? Timezone { get; set; }
+    public required int Timezone { get; set; }
 
     [JsonProperty("id")]
-    public int? Id { get; set; }
+    public required int Id { get; set; }
 
     [JsonProperty("name")]
-    public string? Name { get; set; }
+    public required string Name { get; set; }
 
     [JsonProperty("cod")]
-    public int? Cod { get; set; }
+    public required int Cod { get; set; }
 }

@@ -5,17 +5,17 @@ namespace WeatherManCLICSharp;
 public class Sys
 {
     [JsonProperty("type")]
-    public int Type { get; set; }
+    public required int Type { get; set; }
 
     [JsonProperty("id")]
-    public int Id { get; set; }
+    public required int Id { get; set; }
 
     [JsonProperty("country")]
-    public string Country { get; set; }
+    public required string Country { get; set; }
 
     [JsonProperty("sunrise")]
-    public int Sunrise { get; set; }
+    public required int Sunrise { get; set; }
 
     [JsonProperty("sunset")]
-    public int Sunset { get; set; }
+    public required int Sunset { get; set; }
 }
