@@ -36,7 +36,23 @@ class Program
                 }
                 else
                 {
-                    Console.WriteLine(result.Main.Temp);
+                    var city = CapitalizeFirstLetter(options.City.ToLower());
+                    if (options.Country != null)
+                    {
+                        Console.WriteLine($"{city}, {CapitalizeFirstLetter(options.Country.ToLower())}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{city}, {result.Sys.Country}");
+                    }
+                    
+                    var dt = DateTimeOffset.FromUnixTimeSeconds(result.Dt).LocalDateTime;
+                    Console.WriteLine(dt);
+                    
+                    Console.WriteLine($"{result.Main.Temp} ºC");
+                    
+                    var desc = CapitalizeFirstLetter(result.Weather[0].Description);
+                    Console.WriteLine(desc);
                 }
             }
             catch (Exception e)
@@ -45,5 +61,13 @@ class Program
             }
            
         }
+    }
+    
+    static string CapitalizeFirstLetter(string s) {
+        if (String.IsNullOrEmpty(s))
+            return s;
+        if (s.Length == 1)
+            return s.ToUpper();
+        return s.Remove(1).ToUpper() + s.Substring(1);
     }
 }
