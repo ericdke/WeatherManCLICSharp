@@ -23,7 +23,7 @@ class Program
         
         var configBuilder = new ConfigurationBuilder()
             .SetBasePath(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) ?? Directory.GetCurrentDirectory())
-            .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
         var config = configBuilder.Build();
 
         var down = new Downloader(options.City, options.Country, config);
