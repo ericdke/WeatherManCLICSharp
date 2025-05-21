@@ -29,6 +29,12 @@ public class WeatherPrinter(OptionsModel options, WeatherResult? result)
                     
             var desc = CapitalizeFirstLetter(result.Weather[0].Description);
             Console.WriteLine(desc);
+
+            if (result.Wind != null)
+            {
+                Console.Write(DegreesToCompass(result.Wind.Deg) + " ");
+                Console.WriteLine(result.Wind.Speed + " km/h");
+            }
         }
     }
     
@@ -38,5 +44,13 @@ public class WeatherPrinter(OptionsModel options, WeatherResult? result)
         if (s.Length == 1)
             return s.ToUpper();
         return s.Remove(1).ToUpper() + s.Substring(1);
+    }
+
+    private string DegreesToCompass(int degrees)
+    {
+        List<string> compass =
+            ["Nord", "Nord Nord-Est", "Nord-Est", "Est Nord-Est", "Est", "Est Sud-Est", "Sud-Est", "Sud Sud-Est", "Sud", "Sud Sud-Ouest", "Sud-Ouest", "Ouest Sud-Ouest", "Ouest", "Ouest Nord-Ouest", "Nord-Ouest", "Nord Nord-Ouest"];
+        var i = ((degrees / 22.5) + 0.5) % 16;
+        return compass[(int)i];
     }
 }
